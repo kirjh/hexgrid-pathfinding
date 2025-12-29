@@ -9,14 +9,15 @@ public class Hex
   public int S { get { return - this.q - this.r; } }
 
   // Axial Constructor
-  public Hex(int q, int r)
+  public Hex(int Q, int R)
   {
-    this.q = q;
-    this.r = r;
+    this.q = Q;
+    this.r = R;
   }
 
   // Overrides
-  public override string ToString() {
+  public override string ToString() 
+  {
     return $"[{this.Q}, {this.R}, {this.S}]";
   }
   public override bool Equals(object obj)
@@ -28,5 +29,18 @@ public class Hex
   public override int GetHashCode()
   {
     return (this.q, this.r).GetHashCode();
+  }
+  // Basic Operations
+  public static Hex Add(Hex A, Hex B)
+  {
+    return new Hex(A.Q + B.Q, A.R + B.R);
+  }
+  public static Hex Sub(Hex A, Hex B)
+  {
+    return new Hex(A.Q - B.Q, A.R - B.R);
+  }
+  public static Hex Mult(Hex A, int k)
+  {
+    return new Hex(A.Q * k, A.R * k);
   }
 }
