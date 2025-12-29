@@ -20,7 +20,7 @@ public class Hex
   {
     return $"[{this.Q}, {this.R}, {this.S}]";
   }
-  public override bool Equals(object obj)
+  public override bool Equals(object? obj)
   {
     if (obj is not Hex hex) return false;
 
@@ -43,4 +43,20 @@ public class Hex
   {
     return new Hex(A.Q * k, A.R * k);
   }
+  public static Hex Mult(int k, Hex A)
+  {
+    return new Hex(A.Q * k, A.R * k);
+  }
+  public static Hex Div(Hex A, int k)
+  {
+    if (A.Q == 0 || A.R == 0 || A.S == 0) throw new DivideByZeroException();
+    return new Hex(A.Q / k, A.R / k);
+  }
+  // Operand Overloads
+  public static Hex operator +(Hex right) => right;
+  public static Hex operator +(Hex left, Hex right) => Hex.Add(left, right);
+  public static Hex operator -(Hex left, Hex right) => Hex.Sub(left, right);
+  public static Hex operator *(Hex left, int right) => Hex.Mult(left, right);
+  public static Hex operator *(int left, Hex right) => Hex.Mult(left, right);
+  public static Hex operator /(Hex left, int right) => Hex.Div(left, right);
 }

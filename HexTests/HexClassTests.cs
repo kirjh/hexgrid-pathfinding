@@ -61,15 +61,72 @@ public sealed class HexClassTests
   public void TestMult() {
     Hex a = new Hex(2, 4);
     Hex b = new Hex(4, 8);
+
     Hex mult = Hex.Mult(a, 2);
     bool x = mult.Equals(b);
 
     Assert.IsTrue(x, $"Expected: {b}, Actual: {mult}");
   }
-
-  // Intend to fail
   [TestMethod]
-  public void Fail() {
-    Assert.IsTrue(false, $"This is intended to fail.");
+  public void TestDiv() {
+    Hex a = new Hex(2, 4);
+    Hex b = new Hex(4, 8);
+
+    Hex mult = Hex.Div(b, 2);
+    bool x = mult.Equals(a);
+
+    Assert.IsTrue(x, $"Expected: {a}, Actual: {mult}");
+  }
+
+  // Test operands
+  [TestMethod]
+  public void TestOpAdd() {
+    Hex a = new Hex(2, 4);
+    Hex b = new Hex(1, 2);
+    
+    Hex add = b + b;
+    bool x = add.Equals(a);
+
+    Assert.IsTrue(x, $"Expected: {a}, Actual: {add}");
+  }
+  [TestMethod]
+  public void TestOpSub() {
+    Hex a = new Hex(2, 4);
+    Hex b = new Hex(1, 2);
+
+    Hex sub = a - b;
+    bool x = sub.Equals(b);
+
+    Assert.IsTrue(x, $"Expected: {b}, Actual: {sub}");
+  }
+  [TestMethod]
+  public void TestOpMult1() {
+    Hex a = new Hex(2, 4);
+    Hex b = new Hex(4, 8);
+
+    Hex mult = a * 2;
+    bool x = mult.Equals(b);
+
+    Assert.IsTrue(x, $"Expected: {b}, Actual: {mult}");
+  }
+  [TestMethod]
+  public void TestOpMult2() {
+    Hex a = new Hex(2, 4);
+    Hex b = new Hex(4, 8);
+
+    Hex mult = 2 * a;
+    bool x = mult.Equals(b);
+
+    Assert.IsTrue(x, $"Expected: {b}, Actual: {mult}");
+  }
+  [TestMethod]
+  public void TestOpDiv() {
+    Hex a = new Hex(2, 4);
+    Hex b = new Hex(4, 8);
+
+    Hex mult = b / 2;
+    bool x = mult.Equals(a);
+
+    Assert.IsTrue(x, $"Expected: {a}, Actual: {mult}");
   }
 }
