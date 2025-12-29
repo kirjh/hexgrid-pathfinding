@@ -66,4 +66,10 @@ public sealed class HexClassTests
 
     Assert.IsTrue(x, $"Expected: {b}, Actual: {mult}");
   }
+
+  // Intend to fail
+  [TestMethod]
+  public void Fail() {
+    Assert.IsTrue(false, $"This is intended to fail.");
+  }
 }
