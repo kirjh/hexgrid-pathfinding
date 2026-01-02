@@ -2,33 +2,40 @@
 
 public class Hex
 {
-  private int q { get; set; }
-  private int r { get; set; }
-  public int Q { get { return this.q; } }
-  public int R { get { return this.r; } }
-  public int S { get { return - this.q - this.r; } }
+  private int _q { get; set; }
+  private int _r { get; set; }
+  public int Q { get { return _q; } }
+  public int R { get { return _r; } }
+  public int S { get { return - _q - _r; } }
 
   // Axial Constructor
   public Hex(int Q, int R)
   {
-    this.q = Q;
-    this.r = R;
+    _q = Q;
+    _r = R;
+  }
+
+  // Distance
+  public static int Distance(Hex A, Hex B)
+  {
+    int[] x = [Math.Abs(A.Q - B.Q), Math.Abs(A.R - B.R), Math.Abs(A.S - B.S)];
+    return x.Max();
   }
 
   // Overrides
   public override string ToString() 
   {
-    return $"[{this.Q}, {this.R}, {this.S}]";
+    return $"[{Q}, {R}, {S}]";
   }
   public override bool Equals(object? obj)
   {
     if (obj is not Hex hex) return false;
 
-    return this.q == hex.q && this.r == hex.r;
+    return _q == hex._q && _r == hex._r;
   }
   public override int GetHashCode()
   {
-    return (this.q, this.r).GetHashCode();
+    return (_q, _r).GetHashCode();
   }
   // Basic Operations
   public static Hex Add(Hex A, Hex B)
@@ -54,9 +61,9 @@ public class Hex
   }
   // Operand Overloads
   public static Hex operator +(Hex right) => right;
-  public static Hex operator +(Hex left, Hex right) => Hex.Add(left, right);
-  public static Hex operator -(Hex left, Hex right) => Hex.Sub(left, right);
-  public static Hex operator *(Hex left, int right) => Hex.Mult(left, right);
-  public static Hex operator *(int left, Hex right) => Hex.Mult(left, right);
-  public static Hex operator /(Hex left, int right) => Hex.Div(left, right);
+  public static Hex operator +(Hex left, Hex right) => Add(left, right);
+  public static Hex operator -(Hex left, Hex right) => Sub(left, right);
+  public static Hex operator *(Hex left, int right) => Mult(left, right);
+  public static Hex operator *(int left, Hex right) => Mult(left, right);
+  public static Hex operator /(Hex left, int right) => Div(left, right);
 }

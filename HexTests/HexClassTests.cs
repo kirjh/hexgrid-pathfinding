@@ -129,4 +129,24 @@ public sealed class HexClassTests
 
     Assert.IsTrue(x, $"Expected: {a}, Actual: {mult}");
   }
+  [TestMethod]
+  public void TestDistance1() {
+    Hex a = new Hex(2, -1);
+    Hex b = new Hex(4, -3);
+
+    int dist = Hex.Distance(a, b);
+    bool x = dist == 2;
+
+    Assert.IsTrue(x, $"Expected: 2, Actual: {dist}");
+  }
+  [TestMethod]
+  public void TestDistance2() {
+    Hex a = new Hex(2, -1);
+    Hex b = new Hex(-4, -3);
+
+    int dist = Hex.Distance(a, b);
+    bool x = dist == 8;
+
+    Assert.IsTrue(x, $"Expected: 8, Actual: {dist}");
+  }
 }
