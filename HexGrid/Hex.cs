@@ -31,7 +31,7 @@ public class Hex
   {
     if (obj is not Hex hex) return false;
 
-    return _q == hex._q && _r == hex._r;
+    return _q == hex.Q && _r == hex.R;
   }
   public override int GetHashCode()
   {

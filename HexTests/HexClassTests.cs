@@ -18,7 +18,7 @@ public sealed class HexClassTests
     Hex a = new Hex(1, 2);
     Hex b = new Hex(2, 1);
 
-    Assert.IsTrue(!a.Equals(b), "Equality incorrectly evaluated as true.");
+    Assert.IsFalse(a.Equals(b), "Equality incorrectly evaluated as true.");
   }
   [TestMethod]
   public void TestEquality2() {
